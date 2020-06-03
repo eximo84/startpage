@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Junction';
+    src: url('../fonts/Junction-webfont.eot');
+    src: url('../fonts/Junction-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Junction-webfont.woff') format('woff'),
+         url('../fonts/Junction-webfont.ttf') format('truetype'),
+         url('../fonts/Junction-webfont.svg#CoolveticaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ikaros Sans';
+    src: url('../fonts/Ikaros-Regular.woff2') format('woff2'),
+        url('../fonts/Ikaros-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ikaros Sans';
+    src: url('../fonts/Ikaros-Light.woff2') format('woff2'),
+        url('../fonts/Ikaros-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WaywardSans-Regular';
+    src: url('../fonts/WaywardSans-Regular.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}

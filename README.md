@@ -1,7 +1,7 @@
 # startpage
 Start page used for my self hosted applications
 
-*Backgrounds on the page are loaded from the backgrounds folder randomly, the images must be numbered.*
+*Backgrounds on the page are loaded from the backgrounds folder randomly, the images must be numbered. Backgrounds and fonts are not uploaded here.*
 
 ### Additional resources
 

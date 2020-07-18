@@ -9,6 +9,7 @@ function GenerateChildLinks(childLink) {
     
     var aTag = document.createElement("a");
     aTag.href = childLink.Link;
+    
     aTag.setAttribute('target', '_blank');
     
     var divWrapperTag = document.createElement("div");

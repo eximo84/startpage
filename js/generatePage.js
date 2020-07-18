@@ -7,7 +7,7 @@ function UpdateSearchEngine() {
         return;
     } 
     
-    var formTag = document.querySelector("form");
+    let formTag = document.querySelector("form");
     formTag.action = pageOptions.searchEngineURL;
 }
 
@@ -16,7 +16,7 @@ function GenerateChildLinks(childLink) {
         return null;
     }
     
-    var aTag = document.createElement("a");
+    let aTag = document.createElement("a");
     aTag.href = childLink.Link;
     
     if(pageOptions.openLinksInSameTab) {
@@ -25,16 +25,16 @@ function GenerateChildLinks(childLink) {
         aTag.setAttribute('target', '_blank');
     }
     
-    var divWrapperTag = document.createElement("div");
+    let divWrapperTag = document.createElement("div");
     divWrapperTag.classList.add("item");
     
-    var imgTag = document.createElement("img");
+    let imgTag = document.createElement("img");
     imgTag.src = childLink.Image;
     
-    var divTextTag = document.createElement("div");
+    let divTextTag = document.createElement("div");
     divTextTag.classList.add("subtext");
 
-    var headerTextTag = document.createElement("h3");
+    let headerTextTag = document.createElement("h3");
     headerTextTag.innerText = childLink.DisplayName;
     
     divTextTag.appendChild(headerTextTag);
@@ -46,19 +46,18 @@ function GenerateChildLinks(childLink) {
 }
 
 function GenerateContainer(elm) {
-    var divColumnContainer = document.createElement("div");
+    let divColumnContainer = document.createElement("div");
     divColumnContainer.classList.add("container");
     
-    var divSectionHeader = document.createElement("div");
+    let divSectionHeader = document.createElement("div");
     divSectionHeader.classList.add("section_header");
     
-    var headerOuterTag = document.createElement("h2");
+    let headerOuterTag = document.createElement("h2");
     
-    var headerIcon = document.createElement("i");
-    //headerIcon.classList.add(elm.SymbolPrefix);
+    let headerIcon = document.createElement("i");
     headerIcon.className = elm.SymbolPrefix;
     
-    var headerText = document.createElement("span");
+    let headerText = document.createElement("span");
     headerText.innerText = elm.ContainerName;
     
     headerOuterTag.appendChild(headerIcon);
@@ -68,19 +67,64 @@ function GenerateContainer(elm) {
     divColumnContainer.appendChild(divSectionHeader);
     
     for(var jj = 0; jj < elm.ChildLinks.length; jj++) {
-        var subItem = elm.ChildLinks[jj];
-        var output = GenerateChildLinks(subItem);
+        let subItem = elm.ChildLinks[jj];
+        let output = GenerateChildLinks(subItem);
         if(output) {
             divColumnContainer.appendChild(output);
         }
     }
     
-    var mainPage = document.querySelector(".container_master");
+    let mainPage = document.querySelector(".container_master");
     mainPage.appendChild(divColumnContainer);
 }
 
+// Get current time and format
+function getTime() {
+    let date = new Date(),
+            min = date.getMinutes(),
+            //sec = date.getSeconds(),
+            hour = date.getHours();
+    return "" +
+            (hour < 10 ? ("0" + hour) : hour) + ":" +
+            (min < 10 ? ("0" + min) : min);// + ":" + 
+    //(sec < 10 ? ("0" + sec) : sec);
+}
+
+function getDate() {
+    let date = new Date(),
+            months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            cmonth = months[date.getMonth()],
+            days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            cday = days[date.getDay()],
+            cnum = date.getDate();
+    return "" + cday + " " + cnum + " " + cmonth;
+}
+
+function SetTimeDisplay() {
+    // Set up the clock and date
+    document.getElementById("clock").innerHTML = getTime();
+    document.getElementById("date").innerHTML = getDate();
+
+    // Set clock interval to tick clock
+    setInterval(() => {
+            document.getElementById("clock").innerHTML = getTime();
+    }, 1000);
+    setInterval(() => {
+            document.getElementById("date").innerHTML = getDate();
+    }, 100000);
+}
+
+function RandomizeBackgroundImage() {
+    document.body.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(./backgrounds/' + (Math.floor(Math.random() * 23)+1) + '.jpg)';
+}
 
 function __Main__() {
+    // Set up the clock and date
+    SetTimeDisplay();
+    
+    // Set a random image background
+    RandomizeBackgroundImage();
+    
     // Iterate over the data variable in pageData.js to generate our columns
     for(var jj = 0; jj < data.length; jj++) {
         GenerateContainer(data[jj]);
@@ -88,6 +132,8 @@ function __Main__() {
     
     // Update the search engine URL based on the value in pageOptions.searchEngineURL
     UpdateSearchEngine();
+    
+
 }
 
 __Main__();

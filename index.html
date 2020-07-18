@@ -30,54 +30,14 @@
         </div>
 
         <!-- Content will be injected here from generatePage.js -->
-        <div class="container_master">
-
-        </div>
-
+        <div class="container_master"></div>
         
+        <script>
+            if (!("ontouchstart" in document.documentElement)) {
+                document.documentElement.className += "no-touch";
+            }
+        </script>
         <script src="js/pageData.js"></script>
         <script src="js/generatePage.js"></script>
-        <script>
-
-                if (!("ontouchstart" in document.documentElement)) {
-                document.documentElement.className += "no-touch";
-}
-
-                // Get current time and format
-                function getTime() {
-                let date = new Date(),
-                        min = date.getMinutes(),
-                        //sec = date.getSeconds(),
-                        hour = date.getHours();
-                return "" +
-                        (hour < 10 ? ("0" + hour) : hour) + ":" +
-                        (min < 10 ? ("0" + min) : min);// + ":" + 
-                //(sec < 10 ? ("0" + sec) : sec);
-                }
-                function getDate() {
-                let date = new Date(),
-                        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                        cmonth = months[date.getMonth()],
-                        days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                        cday = days[date.getDay()],
-                        cnum = date.getDate();
-                return "" + cday + " " + cnum + " " + cmonth;
-                }
-        
-                // Set up the clock and date
-                document.getElementById("clock").innerHTML = getTime();
-                document.getElementById("date").innerHTML = getDate();
-                // Set clock interval to tick clock
-                setInterval(() => {
-                        document.getElementById("clock").innerHTML = getTime();
-                }, 1000);
-                setInterval(() => {
-                        document.getElementById("date").innerHTML = getDate();
-                }, 100000);
-
-                document.body.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(./backgrounds/' + (Math.floor(Math.random() * 23)+1) + '.jpg)';
-
-        </script>
-
 </body>
 </html>

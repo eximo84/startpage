@@ -2,6 +2,15 @@ function isEmptyOrSpaces(str){
     return str === null || str.match(/^ *$/) !== null;
 }
 
+function UpdateSearchEngine() {
+    if(isEmptyOrSpaces(pageOptions.searchEngineURL)) {
+        return;
+    } 
+    
+    var formTag = document.querySelector("form");
+    formTag.action = pageOptions.searchEngineURL;
+}
+
 function GenerateChildLinks(childLink) {
     if(isEmptyOrSpaces(childLink.DisplayName)) {
         return null;
@@ -10,7 +19,11 @@ function GenerateChildLinks(childLink) {
     var aTag = document.createElement("a");
     aTag.href = childLink.Link;
     
-    aTag.setAttribute('target', '_blank');
+    if(pageOptions.openLinksInSameTab) {
+        aTag.setAttribute('target', '_self');
+    } else {
+        aTag.setAttribute('target', '_blank');
+    }
     
     var divWrapperTag = document.createElement("div");
     divWrapperTag.classList.add("item");
@@ -66,6 +79,15 @@ function GenerateContainer(elm) {
     mainPage.appendChild(divColumnContainer);
 }
 
-for(var jj = 0; jj < data.length; jj++) {
-    GenerateContainer(data[jj]);
+
+function __Main__() {
+    // Iterate over the data variable in pageData.js to generate our columns
+    for(var jj = 0; jj < data.length; jj++) {
+        GenerateContainer(data[jj]);
+    }
+    
+    // Update the search engine URL based on the value in pageOptions.searchEngineURL
+    UpdateSearchEngine();
 }
+
+__Main__();

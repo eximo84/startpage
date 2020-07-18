@@ -1,3 +1,9 @@
+
+var pageOptions = {
+    "openLinksInSameTab": true,
+    "searchEngineURL": "https://google.com/"
+}
+
 var data = [
     {
         "ContainerName": " Favorites",

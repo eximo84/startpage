@@ -1,4 +1,12 @@
+function isEmptyOrSpaces(str){
+    return str === null || str.match(/^ *$/) !== null;
+}
+
 function GenerateChildLinks(childLink) {
+    if(isEmptyOrSpaces(childLink.DisplayName)) {
+        return null;
+    }
+    
     var aTag = document.createElement("a");
     aTag.href = childLink.Link;
     aTag.setAttribute('target', '_blank');

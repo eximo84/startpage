@@ -12,7 +12,7 @@ var pageOptions = {
     }
 }
 
-var data = [
+var columnData = [
     {
         "ContainerName": " Favorites",
         "SymbolPrefix": "fas fa-heart",

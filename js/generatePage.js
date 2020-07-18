@@ -155,9 +155,9 @@ function __Main__() {
     // Remove the default placeholder message
     RemoveDefaultPageMessage();
     
-    // Iterate over the data variable in pageData.js to generate our columns
-    for(var jj = 0; jj < data.length; jj++) {
-        GenerateContainer(data[jj]);
+    // Iterate over the columnData variable in pageData.js to generate our columns
+    for(var jj = 0; jj < columnData.length; jj++) {
+        GenerateContainer(columnData[jj]);
     }
     
     // Update the search engine URL based on the value in pageOptions.searchEngineURL

@@ -30,7 +30,16 @@
         </div>
 
         <!-- Content will be injected here from generatePage.js -->
-        <div class="container_master"></div>
+        <div class="container_master">
+            <span id="defaultMessage" style="background-color: black; color: white; width: 85%; text-align: center;">
+                <div>
+                Either your browser does not support javascript, or there is a javascript error, probably in pageData.js causing the columns to not be generated properly.
+                </div>
+                <div>
+                Please refer to the console for possible error logs.
+                </div>
+            </span>
+        </div>
         
         <script>
             if (!("ontouchstart" in document.documentElement)) {

@@ -78,6 +78,13 @@ function GenerateContainer(elm) {
     mainPage.appendChild(divColumnContainer);
 }
 
+function RemoveDefaultPageMessage() {
+    let defaultMsg = document.querySelector("#defaultMessage");
+    if(defaultMsg) {
+        defaultMsg.remove();
+    }
+}
+
 // Get current time and format
 function getTime() {
     let date = new Date(),
@@ -119,16 +126,34 @@ function SetTimeDisplay() {
     }, 100000);
 }
 
-function RandomizeBackgroundImage() {
-    document.body.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(./backgrounds/' + (Math.floor(Math.random() * 23)+1) + '.jpg)';
+function RandomizeBackgroundImage(min, max, extension) {
+    let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    let result = './backgrounds/' + randomNumber + extension;
+}
+
+function SetBackground() {
+    let opts = pageOptions.background;
+    
+    let img = "";
+    if(opts.randomize) {
+        img = RandomizeBackgroundImage(opts.minFileName, opts.maxFileName, opts.extension);
+    } else {
+        img = opts.staticBackground;
+    }
+    
+    document.body.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(' + img + ')';    
 }
 
 function __Main__() {
     // Set up the clock and date
     SetTimeDisplay();
     
-    // Set a random image background
-    RandomizeBackgroundImage();
+    // Set the background image
+    SetBackground();
+    
+    // Remove the default placeholder message
+    RemoveDefaultPageMessage();
     
     // Iterate over the data variable in pageData.js to generate our columns
     for(var jj = 0; jj < data.length; jj++) {

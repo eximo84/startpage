@@ -2,7 +2,14 @@
 var pageOptions = {
     "openLinksInSameTab": true,
     "searchEngineURL": "https://google.com/",
-    "displaySeconds": false
+    "displaySeconds": false,
+    "background": {
+        "randomize": true,
+        "minFileName": 20,
+        "maxFileName": 24,
+        "extension": "jpg",
+        "staticBackground": "backgrounds/999.jpg"
+    }
 }
 
 var data = [

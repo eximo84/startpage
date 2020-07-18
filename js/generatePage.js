@@ -81,13 +81,18 @@ function GenerateContainer(elm) {
 // Get current time and format
 function getTime() {
     let date = new Date(),
+            hour = date.getHours(),
             min = date.getMinutes(),
-            //sec = date.getSeconds(),
-            hour = date.getHours();
-    return "" +
-            (hour < 10 ? ("0" + hour) : hour) + ":" +
-            (min < 10 ? ("0" + min) : min);// + ":" + 
-    //(sec < 10 ? ("0" + sec) : sec);
+            sec = date.getSeconds();
+          
+    let result = "" +
+                (hour < 10 ? ("0" + hour) : hour) + ":" +
+                (min < 10 ? ("0" + min) : min);
+    if(pageOptions.displaySeconds) {
+        result += ":" + (sec < 10 ? ("0" + sec) : sec);
+    } 
+    
+    return result;
 }
 
 function getDate() {

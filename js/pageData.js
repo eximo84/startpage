@@ -1,7 +1,8 @@
 
 var pageOptions = {
     "openLinksInSameTab": true,
-    "searchEngineURL": "https://google.com/"
+    "searchEngineURL": "https://google.com/",
+    "displaySeconds": false
 }
 
 var data = [

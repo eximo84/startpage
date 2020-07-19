@@ -130,6 +130,7 @@ function RandomizeBackgroundImage(min, max, extension) {
     let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     
     let result = './backgrounds/' + randomNumber + extension;
+    return result;
 }
 
 function SetBackground() {
